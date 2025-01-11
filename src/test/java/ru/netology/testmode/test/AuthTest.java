@@ -1,7 +1,9 @@
 package ru.netology.testmode.test;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.commands.ShouldHave;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,7 @@ public class AuthTest {
         $("[data-test-id='action-login']").click();
 
         webdriver().shouldHave(url("http://localhost:9999/dashboard"));
+        $(Selectors.withText("Личный кабинет")).should(Condition.visible);
     }
 
     @Test
